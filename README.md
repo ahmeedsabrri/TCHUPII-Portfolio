@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ahmed Sabri Portfolio
+
+This is a personal portfolio project built with Next.js, styled as an interactive terminal. Visitors can explore your background, skills, and projects using CLI-like commands, and download your resume directly from the site.
+
+## Features
+- Interactive terminal interface (type `help` to see available commands)
+- Sections: About, Education, Projects, Skills (with categories)
+- Downloadable resume (PDF)
+- Responsive and deployable on Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 20+
+- npm
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Installation
+```sh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
+```sh
+npm run dev
+```
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
+```sh
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment (Vercel)
+1. Push your code to GitHub.
+2. Go to [vercel.com](https://vercel.com/), sign up, and import your repository.
+3. Vercel will auto-detect Next.js and deploy your site for free.
+4. Every push to your main branch triggers a new deployment.
 
-## Learn More
+## CI/CD with GitHub Actions
+Add a workflow file at `.github/workflows/ci.yml`:
+```yaml
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+- `app/` - Next.js app directory
+- `components/Terminal.tsx` - Terminal UI and logic
+- `data/profile.ts` - Profile, skills, and project data
+- `public/` - Static files (resume, icons)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Resume Download
+Place your resume PDF in the `public/` directory as `AHMEDSABRI-RESUME.pdf`. The download link will be available in the terminal header.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+**Author:** Ahmed Sabri
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For questions or improvements, open an issue or pull request.
