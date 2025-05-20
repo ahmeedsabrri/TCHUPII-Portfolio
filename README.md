@@ -1,5 +1,4 @@
 # Ahmed Sabri Portfolio
-
 This is a personal portfolio project built with Next.js, styled as an interactive terminal. Visitors can explore your background, skills, and projects using CLI-like commands, and download your resume directly from the site.
 
 ## Features
